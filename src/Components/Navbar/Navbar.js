@@ -20,6 +20,15 @@ const Navbar = () => {
 						<ul className="flex lg:text-xl items-center hidden space-x-8 lg:flex">
 							<li>
 								<NavLink
+									to="home"
+									title="Home"
+									className="font-medium tracking-wide transition-colors duration-200 hover:text-deep-purple-accent-400"
+								>
+									Home
+								</NavLink>
+							</li>
+							<li>
+								<NavLink
 									to="courses"
 									title="Courses"
 									className="font-medium tracking-wide transition-colors duration-200 hover:text-deep-purple-accent-400"
@@ -44,16 +53,6 @@ const Navbar = () => {
 								>
 									Blog
 								</NavLink>
-							</li>
-							<li>
-								<a
-									href="/"
-									aria-label="About us"
-									title="About us"
-									className="font-medium tracking-wide transition-colors duration-200 hover:text-deep-purple-accent-400"
-								>
-									About us
-								</a>
 							</li>
 						</ul>
 					</div>
