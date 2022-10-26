@@ -7,6 +7,7 @@ import Checkout from '../Pages/Checkout/Checkout';
 import CourseInformation from '../Pages/CourseInformation/CourseInformation';
 import ErrorPage from '../Pages/ErrorPage/ErrorPage';
 import Home from '../Pages/Home/Home';
+import Login from '../Pages/Login/Login';
 
 const router = createBrowserRouter([
 	{
@@ -16,6 +17,7 @@ const router = createBrowserRouter([
 		children: [
 			{ index: true, element: <Home /> },
 			{ path: 'home', element: <Home /> },
+			{ path: 'login', element: <Login /> },
 			{
 				path: 'courses',
 				element: <Courses />,
