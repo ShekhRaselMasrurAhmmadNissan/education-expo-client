@@ -1,8 +1,35 @@
-import React from 'react';
-import { Link } from 'react-router-dom';
+import React, { useState } from 'react';
+import { useContext } from 'react';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
 import SocialMedia from '../../Components/SocialMedia/SocialMedia';
+import { AuthContext } from '../../Contexts/AuthProvider/AuthProvider';
 
 const Register = () => {
+	const [error, setError] = useState('');
+	const location = useLocation();
+
+	const navigate = useNavigate();
+
+	const { createUser } = useContext(AuthContext);
+
+	const handleSubmit = (event) => {
+		event.preventDefault();
+		const form = event.target;
+		const userName = form.userName.value;
+		const photoURL = form.photoURL.value;
+		const email = form.email.value;
+		const password = form.password.value;
+
+		createUser(email, password)
+			.then((result) => {
+				const user = result.user;
+				console.log(user);
+				form.reset();
+				navigate('/');
+			})
+			.catch((error) => console.error(error));
+	};
+
 	return (
 		<div>
 			<div className="w-full max-w-md mx-auto p-8 space-y-3 rounded-xl bg-gray-200 text-gray-800 mt-8">
@@ -10,6 +37,7 @@ const Register = () => {
 				<form
 					action=""
 					className="space-y-6 ng-untouched ng-pristine ng-valid"
+					onSubmit={handleSubmit}
 				>
 					<div className="space-y-1 text-sm">
 						<label
