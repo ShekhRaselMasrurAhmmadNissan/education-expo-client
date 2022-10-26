@@ -1,7 +1,7 @@
 import { createBrowserRouter } from 'react-router-dom';
 import Courses from '../Layouts/Courses/Courses';
 import Main from '../Layouts/Main/Main';
-import { loadAllCourses } from '../Loader/loader';
+import { loadAllCourses, loadCourseInformation } from '../Loader/loader';
 import AllCourses from '../Pages/AllCourses/AllCourses';
 import CourseInformation from '../Pages/CourseInformation/CourseInformation';
 import ErrorPage from '../Pages/ErrorPage/ErrorPage';
@@ -25,7 +25,13 @@ const router = createBrowserRouter([
 						element: <AllCourses />,
 						loader: loadAllCourses,
 					},
-					{ path: 'course/:id', element: <CourseInformation /> },
+					{
+						path: 'course/:id',
+						element: <CourseInformation />,
+						loader: ({ params }) => {
+							loadCourseInformation(params.id);
+						},
+					},
 				],
 			},
 		],
