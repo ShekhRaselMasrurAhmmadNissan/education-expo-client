@@ -13,7 +13,10 @@ const Login = () => {
 					className="space-y-6 ng-untouched ng-pristine ng-valid"
 				>
 					<div className="space-y-1 text-sm">
-						<label for="username" className="block text-gray-600">
+						<label
+							htmlFor="username"
+							className="block text-gray-600"
+						>
 							Username
 						</label>
 						<input
@@ -25,7 +28,10 @@ const Login = () => {
 						/>
 					</div>
 					<div className="space-y-1 text-sm">
-						<label for="password" className="block text-gray-600">
+						<label
+							htmlFor="password"
+							className="block text-gray-600"
+						>
 							Password
 						</label>
 						<input
