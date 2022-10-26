@@ -1,12 +1,24 @@
 import React, { useState } from 'react';
 import { Link, NavLink } from 'react-router-dom';
-import { FaSun, FaMoon } from 'react-icons/fa';
+import { FaSun, FaMoon, FaUserAlt } from 'react-icons/fa';
 
 import navbarLogo from '../../assets/navbarLogo.png';
+import { useContext } from 'react';
+import { AuthContext } from '../../Contexts/AuthProvider/AuthProvider';
 
 const Navbar = () => {
 	const [isMenuOpen, setIsMenuOpen] = useState(false);
 	const [isLight, setIsLight] = useState(true);
+
+	const { user, logout } = useContext(AuthContext);
+
+	const handleLogout = () => {
+		logout()
+			.then(() => {
+				alert('Successfully Logged out.');
+			})
+			.catch((error) => console.error(error));
+	};
 
 	return (
 		<>
@@ -60,25 +72,50 @@ const Navbar = () => {
 						</ul>
 					</div>
 					<ul className="flex items-center hidden space-x-8 lg:flex">
-						<li>
-							<Link
-								to="/login"
-								title="Sign in"
-								className="inline-flex items-center justify-center h-12 px-6 font-medium tracking-wide text-blue-500 transition duration-200 rounded shadow-md text-lg"
-							>
-								Sign in
-							</Link>
-						</li>
-						<li>
-							<Link
-								to="/register"
-								className="inline-flex items-center justify-center h-12 px-6 font-medium tracking-wide text-blue-500 transition duration-200 rounded shadow-md text-lg"
-								aria-label="Sign up"
-								title="Sign up"
-							>
-								Sign up
-							</Link>
-						</li>
+						{user && user.uid ? (
+							<>
+								<li>
+									<img
+										src={user.photoURL || <FaUserAlt />}
+										alt=""
+										className="h-8 w-8 rounded-full"
+										title={user.displayName}
+									/>
+								</li>
+								<li>
+									<button
+										className="inline-flex items-center justify-center h-12 px-6 font-medium tracking-wide text-blue-500 transition duration-200 rounded shadow-md text-lg"
+										aria-label="Log Out"
+										title="Sign up"
+										onClick={handleLogout}
+									>
+										Log Out
+									</button>
+								</li>
+							</>
+						) : (
+							<>
+								<li>
+									<Link
+										to="/login"
+										title="Sign in"
+										className="inline-flex items-center justify-center h-12 px-6 font-medium tracking-wide text-blue-500 transition duration-200 rounded shadow-md text-lg"
+									>
+										Sign in
+									</Link>
+								</li>
+								<li>
+									<Link
+										to="/register"
+										className="inline-flex items-center justify-center h-12 px-6 font-medium tracking-wide text-blue-500 transition duration-200 rounded shadow-md text-lg"
+										aria-label="Sign up"
+										title="Sign up"
+									>
+										Sign up
+									</Link>
+								</li>
+							</>
+						)}
 						<li>
 							<button
 								className="text-3xl"
