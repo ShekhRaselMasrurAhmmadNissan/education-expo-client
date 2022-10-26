@@ -1,0 +1,87 @@
+import React from 'react';
+import { Link } from 'react-router-dom';
+import SocialMedia from '../../Components/SocialMedia/SocialMedia';
+
+const Register = () => {
+	return (
+		<div>
+			<div className="w-full max-w-md mx-auto p-8 space-y-3 rounded-xl bg-gray-200 text-gray-800 mt-8">
+				<h1 className="text-2xl font-bold text-center">Sign UP</h1>
+				<form
+					action=""
+					className="space-y-6 ng-untouched ng-pristine ng-valid"
+				>
+					<div className="space-y-1 text-sm">
+						<label
+							htmlFor="userName"
+							className="block text-gray-600"
+						>
+							Username
+						</label>
+						<input
+							type="text"
+							name="userName"
+							id="userName"
+							placeholder="User Name"
+							className="w-full px-4 py-3 rounded-md border-gray-300 bg-gray-50 text-gray-800 focus:border-blue-600"
+						/>
+					</div>
+					<div className="space-y-1 text-sm">
+						<label
+							htmlFor="photoURL"
+							className="block text-gray-600"
+						>
+							Picture
+						</label>
+						<input
+							type="text"
+							name="photoURL"
+							id="photoURL"
+							placeholder="Photo URL"
+							className="w-full px-4 py-3 rounded-md border-gray-300 bg-gray-50 text-gray-800 focus:border-blue-600"
+						/>
+					</div>
+					<div className="space-y-1 text-sm">
+						<label htmlFor="email" className="block text-gray-600">
+							Email
+						</label>
+						<input
+							type="email"
+							name="email"
+							id="email"
+							placeholder="Username"
+							className="w-full px-4 py-3 rounded-md border-gray-300 bg-gray-50 text-gray-800 focus:border-blue-600"
+						/>
+					</div>
+					<div className="space-y-1 text-sm">
+						<label
+							htmlFor="password"
+							className="block text-gray-600"
+						>
+							Password
+						</label>
+						<input
+							type="password"
+							name="password"
+							id="password"
+							placeholder="Password"
+							className="w-full px-4 py-3 rounded-md border-gray-300 bg-gray-50 text-gray-800 focus:border-blue-600"
+						/>
+					</div>
+					<button className="block w-full p-3 text-center rounded-sm text-gray-50 bg-blue-600">
+						Sign UP
+					</button>
+				</form>
+				<SocialMedia />
+				<p className="text-xs text-center sm:px-6 text-gray-600">
+					Already have an account?
+					<Link to="/login" className="underline text-gray-800">
+						Login
+					</Link>
+				</p>
+			</div>
+		</div>
+	);
+};
+
+export default Register;
