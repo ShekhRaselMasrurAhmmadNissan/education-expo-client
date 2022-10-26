@@ -1,9 +1,14 @@
 import { GithubAuthProvider, GoogleAuthProvider } from 'firebase/auth';
 import React, { useContext } from 'react';
+import { useLocation, useNavigate } from 'react-router-dom';
 import { AuthContext } from '../../Contexts/AuthProvider/AuthProvider';
 
 const SocialMedia = () => {
 	const { providerLogin } = useContext(AuthContext);
+	const location = useLocation();
+	const navigate = useNavigate();
+
+	const from = location.state?.from?.pathname || '/';
 
 	const googleProvider = new GoogleAuthProvider();
 	const githubProvider = new GithubAuthProvider();
@@ -13,6 +18,7 @@ const SocialMedia = () => {
 			.then((result) => {
 				const user = result.user;
 				console.log(user);
+				navigate(from, { replace: true });
 			})
 			.catch((error) => console.error(error));
 	};

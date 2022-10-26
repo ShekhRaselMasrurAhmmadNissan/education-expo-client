@@ -58,13 +58,13 @@ const Register = () => {
 							htmlFor="userName"
 							className="block text-gray-600"
 						>
-							Username
+							Full Name
 						</label>
 						<input
 							type="text"
 							name="userName"
 							id="userName"
-							placeholder="User Name"
+							placeholder="Full Name"
 							className="w-full px-4 py-3 rounded-md border-gray-300 bg-gray-50 text-gray-800 focus:border-blue-600"
 							required
 						/>
