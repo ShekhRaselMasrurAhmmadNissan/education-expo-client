@@ -3,6 +3,7 @@ import Courses from '../Layouts/Courses/Courses';
 import Main from '../Layouts/Main/Main';
 import { loadAllCourses, loadCourseInformation } from '../Loader/loader';
 import AllCourses from '../Pages/AllCourses/AllCourses';
+import Checkout from '../Pages/Checkout/Checkout';
 import CourseInformation from '../Pages/CourseInformation/CourseInformation';
 import ErrorPage from '../Pages/ErrorPage/ErrorPage';
 import Home from '../Pages/Home/Home';
@@ -28,6 +29,10 @@ const router = createBrowserRouter([
 					{
 						path: 'course/:id',
 						element: <CourseInformation />,
+					},
+					{
+						path: 'checkout/:id',
+						element: <Checkout />,
 					},
 				],
 			},

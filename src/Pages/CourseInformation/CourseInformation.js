@@ -64,7 +64,7 @@ const CourseInformation = () => {
 				</p>
 			</div>
 			<Link
-				to={`checkout/${courseDetails.id}`}
+				to={`../checkout/${courseDetails.id}`}
 				className="text-lg font-medium px-3 py-2 rounded-md bg-blue-400 text-white ml-8"
 			>
 				Get Premium Access
