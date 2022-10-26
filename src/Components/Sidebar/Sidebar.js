@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 
 const Sidebar = ({ courses }) => {
 	return (
-		<div className="ml-6 lg:sticky lg:top-[165px]">
+		<div className="ml-6 lg:sticky lg:top-[165px] bg-gray-300 p-8 rounded-xl mr-8">
 			<h1 className="text-center text-4xl font-medium text-blue-400 mb-6">
 				<Link to="/courses">All Courses</Link>
 			</h1>
