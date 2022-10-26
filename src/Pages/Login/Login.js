@@ -1,29 +1,49 @@
-import React from 'react';
-import { Link } from 'react-router-dom';
+import React, { useState } from 'react';
+import { useContext } from 'react';
+import { Link, useNavigate } from 'react-router-dom';
 import SocialMedia from '../../Components/SocialMedia/SocialMedia';
+import { AuthContext } from '../../Contexts/AuthProvider/AuthProvider';
 
 const Login = () => {
+	const [error, setError] = useState('');
+	const { login } = useContext(AuthContext);
+
+	const navigate = useNavigate();
+
+	const handleSubmit = (event) => {
+		event.preventDefault();
+		const form = event.target;
+		const email = form.email.value;
+		const password = form.password.value;
+
+		login(email, password)
+			.then((result) => {
+				const user = result.user;
+				console.log(user);
+				form.reset();
+				navigate('/');
+			})
+			.catch((error) => console.error(error));
+	};
+
 	return (
 		<div>
 			<div className="w-full max-w-md mx-auto p-8 space-y-3 rounded-xl bg-gray-200 text-gray-800 mt-8">
 				<h1 className="text-2xl font-bold text-center">Login</h1>
 				<form
-					novalidate=""
+					onSubmit={handleSubmit}
 					action=""
 					className="space-y-6 ng-untouched ng-pristine ng-valid"
 				>
 					<div className="space-y-1 text-sm">
-						<label
-							htmlFor="username"
-							className="block text-gray-600"
-						>
-							Username
+						<label htmlFor="email" className="block text-gray-600">
+							Email
 						</label>
 						<input
-							type="text"
-							name="username"
-							id="username"
-							placeholder="Username"
+							type="email"
+							name="email"
+							id="email"
+							placeholder="Email"
 							className="w-full px-4 py-3 rounded-md border-gray-300 bg-gray-50 text-gray-800 focus:border-blue-600"
 						/>
 					</div>
