@@ -1,6 +1,7 @@
 import { createBrowserRouter } from 'react-router-dom';
 import Courses from '../Layouts/Courses/Courses';
 import Main from '../Layouts/Main/Main';
+import Private from '../Layouts/Private/Private';
 import { loadAllCourses, loadCourseInformation } from '../Loader/loader';
 import AllCourses from '../Pages/AllCourses/AllCourses';
 import Checkout from '../Pages/Checkout/Checkout';
@@ -36,7 +37,11 @@ const router = createBrowserRouter([
 					},
 					{
 						path: 'checkout/:id',
-						element: <Checkout />,
+						element: (
+							<Private>
+								<Checkout />
+							</Private>
+						),
 					},
 				],
 			},

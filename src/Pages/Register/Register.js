@@ -1,12 +1,11 @@
 import React, { useState } from 'react';
 import { useContext } from 'react';
-import { Link, useLocation, useNavigate } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import SocialMedia from '../../Components/SocialMedia/SocialMedia';
 import { AuthContext } from '../../Contexts/AuthProvider/AuthProvider';
 
 const Register = () => {
 	const [error, setError] = useState('');
-	const location = useLocation();
 
 	const navigate = useNavigate();
 

@@ -50,7 +50,10 @@ const Checkout = () => {
 			>
 				<div className="grid grid-cols-6 gap-4">
 					<div className="col-span-full sm:col-span-3">
-						<label for="firstName" className="text-md font-medium">
+						<label
+							htmlFor="firstName"
+							className="text-md font-medium"
+						>
 							First name
 						</label>
 						<input
@@ -62,7 +65,10 @@ const Checkout = () => {
 						/>
 					</div>
 					<div className="col-span-full sm:col-span-3">
-						<label for="lastName" className="text-md font-medium">
+						<label
+							htmlFor="lastName"
+							className="text-md font-medium"
+						>
 							Last name
 						</label>
 						<input
@@ -74,7 +80,7 @@ const Checkout = () => {
 						/>
 					</div>
 					<div className="col-span-full sm:col-span-3">
-						<label for="email" className="text-md font-medium">
+						<label htmlFor="email" className="text-md font-medium">
 							Email
 						</label>
 						<input
