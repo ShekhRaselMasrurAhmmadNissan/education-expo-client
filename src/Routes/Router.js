@@ -28,9 +28,6 @@ const router = createBrowserRouter([
 					{
 						path: 'course/:id',
 						element: <CourseInformation />,
-						loader: ({ params }) => {
-							loadCourseInformation(params.id);
-						},
 					},
 				],
 			},
