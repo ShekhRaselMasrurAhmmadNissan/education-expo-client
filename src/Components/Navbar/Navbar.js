@@ -1,10 +1,12 @@
 import React, { useState } from 'react';
 import { Link, NavLink } from 'react-router-dom';
+import { FaSun, FaMoon } from 'react-icons/fa';
 
 import navbarLogo from '../../assets/navbarLogo.png';
 
 const Navbar = () => {
 	const [isMenuOpen, setIsMenuOpen] = useState(false);
+	const [isLight, setIsLight] = useState(true);
 
 	return (
 		<>
@@ -59,24 +61,47 @@ const Navbar = () => {
 					</div>
 					<ul className="flex items-center hidden space-x-8 lg:flex">
 						<li>
-							<a
-								href="/"
-								aria-label="Sign in"
+							<Link
+								to="/login"
 								title="Sign in"
-								className="font-medium tracking-wide transition-colors duration-200 hover:text-deep-purple-accent-400"
+								className="inline-flex items-center justify-center h-12 px-6 font-medium tracking-wide text-blue-500 transition duration-200 rounded shadow-md text-lg"
 							>
 								Sign in
-							</a>
+							</Link>
 						</li>
 						<li>
-							<a
-								href="/"
-								className="inline-flex items-center justify-center h-12 px-6 font-medium tracking-wide text-white transition duration-200 rounded shadow-md bg-deep-purple-accent-400 hover:bg-deep-purple-accent-700 focus:shadow-outline focus:outline-none"
+							<Link
+								to="/register"
+								className="inline-flex items-center justify-center h-12 px-6 font-medium tracking-wide text-blue-500 transition duration-200 rounded shadow-md text-lg"
 								aria-label="Sign up"
 								title="Sign up"
 							>
 								Sign up
-							</a>
+							</Link>
+						</li>
+						<li>
+							<button
+								className="text-3xl"
+								onClick={() => {
+									setIsLight(!isLight);
+								}}
+							>
+								{isLight ? (
+									<>
+										<FaSun />
+										<span className="hidden lg:inline text-sm">
+											Light
+										</span>
+									</>
+								) : (
+									<>
+										<FaMoon />
+										<span className="hidden lg:inline text-sm">
+											Dark
+										</span>
+									</>
+								)}
+							</button>
 						</li>
 					</ul>
 					<div className="lg:hidden">
