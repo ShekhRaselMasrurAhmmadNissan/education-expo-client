@@ -12,6 +12,7 @@ const Navbar = () => {
 				<div className="relative flex items-center justify-between">
 					<div className="flex items-center">
 						<Link
+							to="/"
 							title="Education Expo"
 							className="inline-flex items-center mr-8"
 						>
