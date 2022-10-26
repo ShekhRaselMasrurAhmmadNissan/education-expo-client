@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
+import Swal from 'sweetalert2';
 
 const Checkout = () => {
 	const [courseDetails, setCourseDetails] = useState({});
@@ -18,6 +19,19 @@ const Checkout = () => {
 		};
 		loadCourseDetails();
 	}, [id]);
+
+	const handleSubmit = (event) => {
+		event.preventDefault();
+		const form = event.target;
+		const firstName = form.firstName.value;
+		const lastName = form.lastName.value;
+
+		Swal.fire(
+			`Thank You ${firstName} ${lastName}`,
+			`for purchasing the ${courseDetails?.name} course`,
+			'success'
+		);
+	};
 	return (
 		<div>
 			<h1 className="text-4xl font-medium mb-6">
@@ -30,7 +44,10 @@ const Checkout = () => {
 				<kbd className="bg-gray-300 p-2 rounded-xl">Accept</kbd> to
 				purchase the course.
 			</p>
-			<form className=" mt-4 mr-4 px-8 py-4 border-2 rounded-lg">
+			<form
+				className=" mt-4 mr-4 px-8 py-4 border-2 rounded-lg"
+				onSubmit={handleSubmit}
+			>
 				<div className="grid grid-cols-6 gap-4">
 					<div className="col-span-full sm:col-span-3">
 						<label for="firstName" className="text-md font-medium">
