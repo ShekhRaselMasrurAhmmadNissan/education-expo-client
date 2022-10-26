@@ -21,9 +21,13 @@ const Login = () => {
 				const user = result.user;
 				console.log(user);
 				form.reset();
+				setError('');
 				navigate('/');
 			})
-			.catch((error) => console.error(error));
+			.catch((error) => {
+				console.error(error);
+				setError(error.message);
+			});
 	};
 
 	return (
@@ -45,6 +49,7 @@ const Login = () => {
 							id="email"
 							placeholder="Email"
 							className="w-full px-4 py-3 rounded-md border-gray-300 bg-gray-50 text-gray-800 focus:border-blue-600"
+							required
 						/>
 					</div>
 					<div className="space-y-1 text-sm">
@@ -60,6 +65,7 @@ const Login = () => {
 							id="password"
 							placeholder="Password"
 							className="w-full px-4 py-3 rounded-md border-gray-300 bg-gray-50 text-gray-800 focus:border-blue-600"
+							required
 						/>
 						<div className="flex justify-end text-xs text-gray-600">
 							<a rel="noopener noreferrer" href="#">
@@ -67,6 +73,13 @@ const Login = () => {
 							</a>
 						</div>
 					</div>
+
+					{error && (
+						<p className="text-md font-medium text-red-500">
+							{error}
+						</p>
+					)}
+
 					<button className="block w-full p-3 text-center rounded-sm text-gray-50 bg-blue-600">
 						Sign in
 					</button>
