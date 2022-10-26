@@ -9,7 +9,7 @@ const Register = () => {
 
 	const navigate = useNavigate();
 
-	const { createUser } = useContext(AuthContext);
+	const { createUser, updateUserProfile } = useContext(AuthContext);
 
 	const handleSubmit = (event) => {
 		event.preventDefault();
@@ -26,7 +26,18 @@ const Register = () => {
 				form.reset();
 				setError('');
 				navigate('/');
+				handleUpdateProfile(userName, photoURL);
 			})
+			.catch((error) => {
+				console.error(error);
+				setError(error.message);
+			});
+	};
+
+	const handleUpdateProfile = (userName, photoURL) => {
+		const profile = { displayName: userName, photoURL: photoURL };
+		updateUserProfile(profile)
+			.then(() => {})
 			.catch((error) => {
 				console.error(error);
 				setError(error.message);
