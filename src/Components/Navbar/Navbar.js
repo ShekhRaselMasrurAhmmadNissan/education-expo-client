@@ -8,7 +8,7 @@ const Navbar = () => {
 
 	return (
 		<>
-			<div className="px-4 py-5 mx-auto sm:max-w-xl md:max-w-full lg:max-w-screen md:shadow-lg md:px-24 lg:px-4 sticky bg-white top-0">
+			<div className="px-4 py-5 mx-auto sm:max-w-xl md:max-w-full lg:max-w-screen md:shadow-lg md:px-24 lg:px-4 sticky bg-white top-0 z-50">
 				<div className="relative flex items-center justify-between">
 					<div className="flex items-center">
 						<Link
