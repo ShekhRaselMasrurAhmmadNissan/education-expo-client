@@ -1,8 +1,11 @@
 import React from 'react';
+import { createRef } from 'react';
 import { useEffect } from 'react';
 import { useState } from 'react';
-import { Link, useLoaderData, useParams } from 'react-router-dom';
+import { Link, useParams } from 'react-router-dom';
+import Pdf from 'react-to-pdf';
 
+const ref = createRef();
 const CourseInformation = () => {
 	const [courseDetails, setCourseDetails] = useState({});
 	const { id } = useParams();
@@ -23,10 +26,24 @@ const CourseInformation = () => {
 
 	return (
 		<div className="mr-4 relative pr-8">
-			<button className="text-lg font-medium px-3 py-2 rounded-md bg-blue-400 text-white absolute right-8">
-				Download
-			</button>
-			<div>
+			<Pdf
+				targetRef={ref}
+				filename={`${courseDetails?.name}.pdf`}
+				x={10}
+				y={10}
+				scale={0.7}
+			>
+				{({ toPdf }) => (
+					<button
+						className="text-lg font-medium px-3 py-2 rounded-md bg-blue-400 text-white absolute right-8"
+						onClick={toPdf}
+					>
+						Download
+					</button>
+				)}
+			</Pdf>
+
+			<div ref={ref} className="ml-8">
 				<h1 className="text-4xl font-medium text-blue-500 mb-3">
 					{courseDetails?.name}
 				</h1>
@@ -45,14 +62,13 @@ const CourseInformation = () => {
 				<p className="text-lg font-medium mt-2 mb-4">
 					{courseDetails?.details}
 				</p>
-
-				<Link
-					to={`/checkout/${courseDetails.id}`}
-					className="text-lg font-medium px-3 py-2 rounded-md bg-blue-400 text-white"
-				>
-					Get Premium Access
-				</Link>
 			</div>
+			<Link
+				to={`/checkout/${courseDetails.id}`}
+				className="text-lg font-medium px-3 py-2 rounded-md bg-blue-400 text-white ml-8"
+			>
+				Get Premium Access
+			</Link>
 		</div>
 	);
 };
