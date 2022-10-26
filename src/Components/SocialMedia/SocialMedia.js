@@ -1,6 +1,21 @@
-import React from 'react';
+import { GoogleAuthProvider } from 'firebase/auth';
+import React, { useContext } from 'react';
+import { AuthContext } from '../../Contexts/AuthProvider/AuthProvider';
 
 const SocialMedia = () => {
+	const { providerLogin } = useContext(AuthContext);
+
+	const googleProvider = new GoogleAuthProvider();
+
+	const handleGoogleLogin = () => {
+		providerLogin(googleProvider)
+			.then((result) => {
+				const user = result.user;
+				console.log(user);
+			})
+			.catch((error) => console.error(error));
+	};
+
 	return (
 		<div>
 			<div className="flex items-center pt-4 space-x-1">
@@ -14,6 +29,7 @@ const SocialMedia = () => {
 				<button
 					aria-label="Log in with Google"
 					className="p-3 rounded-sm"
+					onClick={handleGoogleLogin}
 				>
 					<svg
 						xmlns="http://www.w3.org/2000/svg"
