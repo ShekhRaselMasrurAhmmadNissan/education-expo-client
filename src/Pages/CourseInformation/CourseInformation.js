@@ -2,7 +2,7 @@ import React from 'react';
 import { createRef } from 'react';
 import { useEffect } from 'react';
 import { useState } from 'react';
-import { FaFileDownload } from 'react-icons/fa';
+import { FaEye, FaFileDownload, FaStar } from 'react-icons/fa';
 import { Link, useParams } from 'react-router-dom';
 import Pdf from 'react-to-pdf';
 
@@ -36,15 +36,16 @@ const CourseInformation = () => {
 			>
 				{({ toPdf }) => (
 					<>
-						<button className="text-lg font-medium px-3 py-2 rounded-md bg-blue-400  hidden lg:inline-block">
+						<button className="text-lg font-medium px-3 py-2 rounded-md bg-blue-400  hidden">
 							Download
 						</button>
 
 						<button
 							className="text-blue-600 absolute right-8"
 							onClick={toPdf}
+							title="Download"
 						>
-							<FaFileDownload className="h-8 w-8" />
+							<FaFileDownload className="h-8 w-8 lg:h-12 lg:w-12" />
 						</button>
 					</>
 				)}
@@ -68,6 +69,20 @@ const CourseInformation = () => {
 				<div className="md:flex md:justify-between md:mr-40 mt-2 text-lg font-medium text-blue-700">
 					<p>Duration: {courseDetails?.duration}</p>
 					<p>Price: ${courseDetails?.price}</p>
+					<div className="flex justify-between">
+						<p className="flex items-center gap-x-2">
+							<FaStar className="text-yellow-500" />
+							<span className="text-blue-700">
+								{courseDetails?.ratings}
+							</span>
+						</p>
+						<p className="flex items-center gap-x-2 lg:ml-14">
+							<FaEye />
+							<span className="text-blue-700">
+								{courseDetails?.review}
+							</span>
+						</p>
+					</div>
 				</div>
 
 				<p className="text-lg font-medium mt-2 mb-4">
