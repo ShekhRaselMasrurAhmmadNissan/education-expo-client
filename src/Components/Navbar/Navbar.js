@@ -72,15 +72,17 @@ const Navbar = () => {
 						</ul>
 					</div>
 					<ul className="flex items-center hidden space-x-8 lg:flex">
-						{user && user.uid ? (
+						{user && user?.uid ? (
 							<>
 								<li>
-									<img
-										src={user.photoURL || <FaUserAlt />}
-										alt=""
-										className="h-8 w-8 rounded-full"
-										title={user.displayName}
-									/>
+									{user?.photoURL ? (
+										<img src={user.photoURL} alt="" />
+									) : (
+										<FaUserAlt
+											className="h-8 w-8 rounded-full"
+											title={user.displayName}
+										/>
+									)}
 								</li>
 								<li>
 									<button
@@ -141,6 +143,28 @@ const Navbar = () => {
 							</button>
 						</li>
 					</ul>
+					<button
+						className="text-3xl"
+						onClick={() => {
+							setIsLight(!isLight);
+						}}
+					>
+						{isLight ? (
+							<>
+								<FaSun />
+								<span className="hidden lg:inline text-sm">
+									Light
+								</span>
+							</>
+						) : (
+							<>
+								<FaMoon />
+								<span className="hidden lg:inline text-sm">
+									Dark
+								</span>
+							</>
+						)}
+					</button>
 					<div className="lg:hidden">
 						<button
 							aria-label="Open Menu"
@@ -169,55 +193,8 @@ const Navbar = () => {
 						{isMenuOpen && (
 							<div className="absolute top-0 left-0 w-full">
 								<div className="p-5 bg-white border rounded shadow-sm">
-									<div className="flex items-center justify-between mb-4">
-										<div>
-											<a
-												href="/"
-												aria-label="Company"
-												title="Company"
-												className="inline-flex items-center"
-											>
-												<svg
-													className="w-8 text-deep-purple-accent-400"
-													viewBox="0 0 24 24"
-													strokeLinejoin="round"
-													strokeWidth="2"
-													strokeLinecap="round"
-													strokeMiterlimit="10"
-													stroke="currentColor"
-													fill="none"
-												>
-													<rect
-														x="3"
-														y="1"
-														width="7"
-														height="12"
-													/>
-													<rect
-														x="3"
-														y="17"
-														width="7"
-														height="6"
-													/>
-													<rect
-														x="14"
-														y="1"
-														width="7"
-														height="6"
-													/>
-													<rect
-														x="14"
-														y="11"
-														width="7"
-														height="12"
-													/>
-												</svg>
-												<span className="ml-2 text-xl font-bold tracking-wide text-gray-800 uppercase">
-													Company
-												</span>
-											</a>
-										</div>
-										<div>
+									<div className="flex items-center justify-between mb-4relative">
+										<div className="absolute top-4 right-10">
 											<button
 												aria-label="Close Menu"
 												title="Close Menu"
@@ -238,68 +215,146 @@ const Navbar = () => {
 											</button>
 										</div>
 									</div>
-									<nav>
+									<nav className="mt-6">
 										<ul className="space-y-4">
 											<li>
-												<a
-													href="/"
-													aria-label="Our product"
-													title="Our product"
+												<Link
+													to="home"
+													aria-label="Home"
+													title="Home"
 													className="font-medium tracking-wide transition-colors duration-200 hover:text-deep-purple-accent-400"
+													onClick={() => {
+														setIsMenuOpen(false);
+													}}
 												>
-													Product
-												</a>
+													Home
+												</Link>
 											</li>
 											<li>
-												<a
-													href="/"
-													aria-label="Our product"
-													title="Our product"
+												<Link
+													to="courses"
+													aria-label="Courses"
+													title="Courses"
 													className="font-medium tracking-wide transition-colors duration-200 hover:text-deep-purple-accent-400"
+													onClick={() => {
+														setIsMenuOpen(false);
+													}}
 												>
-													Features
-												</a>
+													Courses
+												</Link>
 											</li>
 											<li>
-												<a
-													href="/"
-													aria-label="Product pricing"
-													title="Product pricing"
+												<Link
+													to="faq"
+													aria-label="FAQ"
+													title="FAQ"
 													className="font-medium tracking-wide transition-colors duration-200 hover:text-deep-purple-accent-400"
+													onClick={() => {
+														setIsMenuOpen(false);
+													}}
 												>
-													Pricing
-												</a>
+													FAQ
+												</Link>
 											</li>
 											<li>
-												<a
-													href="/"
-													aria-label="About us"
-													title="About us"
+												<Link
+													to="blog"
+													aria-label="Blog"
+													title="Blog"
 													className="font-medium tracking-wide transition-colors duration-200 hover:text-deep-purple-accent-400"
+													onClick={() => {
+														setIsMenuOpen(false);
+													}}
 												>
-													About us
-												</a>
+													Blog
+												</Link>
 											</li>
-											<li>
-												<a
-													href="/"
-													aria-label="Sign in"
-													title="Sign in"
-													className="font-medium tracking-wide transition-colors duration-200 hover:text-deep-purple-accent-400"
-												>
-													Sign in
-												</a>
-											</li>
-											<li>
-												<a
-													href="/"
-													className="inline-flex items-center justify-center w-full h-12 px-6 font-medium tracking-wide text-white transition duration-200 rounded shadow-md bg-deep-purple-accent-400 hover:bg-deep-purple-accent-700 focus:shadow-outline focus:outline-none"
-													aria-label="Sign up"
-													title="Sign up"
-												>
-													Sign up
-												</a>
-											</li>
+											{user && user?.uid ? (
+												<>
+													<li
+														className="flex items-center gap-x-2"
+														onClick={() => {
+															setIsMenuOpen(
+																false
+															);
+														}}
+													>
+														{user?.photoURL ? (
+															<img
+																src={
+																	user.photoURL
+																}
+																alt=""
+																className="h-8 w-8 rounded-full"
+																title={
+																	user.displayName
+																}
+															/>
+														) : (
+															<FaUserAlt
+																className="h-8 w-8 rounded-full"
+																title={
+																	user.displayName
+																}
+															/>
+														)}
+														{user?.displayName}
+													</li>
+													<li
+														onClick={() => {
+															setIsMenuOpen(
+																false
+															);
+														}}
+													>
+														<button
+															className="inline-flex items-center justify-center h-12 px-6 font-medium tracking-wide text-blue-500 transition duration-200 rounded shadow-md text-lg"
+															aria-label="Log Out"
+															title="Sign up"
+															onClick={
+																handleLogout
+															}
+														>
+															Log Out
+														</button>
+													</li>
+												</>
+											) : (
+												<>
+													<li
+														onClick={() => {
+															setIsMenuOpen(
+																false
+															);
+														}}
+													>
+														<Link
+															to="login"
+															aria-label="Sign in"
+															title="Sign in"
+															className="inline-flex items-center justify-center w-full h-12 px-6 font-medium tracking-wide text-black transition duration-200 rounded shadow-md bg-deep-purple-accent-400 hover:bg-deep-purple-accent-700 focus:shadow-outline focus:outline-none"
+														>
+															Sign in
+														</Link>
+													</li>
+													<li
+														onClick={() => {
+															setIsMenuOpen(
+																false
+															);
+														}}
+													>
+														<Link
+															to="register"
+															className="inline-flex items-center justify-center w-full h-12 px-6 font-medium tracking-wide text-black transition duration-200 rounded shadow-md bg-deep-purple-accent-400 hover:bg-deep-purple-accent-700 focus:shadow-outline focus:outline-none"
+															aria-label="Sign up"
+															title="Sign up"
+														>
+															Sign up
+														</Link>
+													</li>
+												</>
+											)}
 										</ul>
 									</nav>
 								</div>

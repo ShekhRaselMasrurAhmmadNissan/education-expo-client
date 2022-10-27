@@ -3,7 +3,7 @@ import React from 'react';
 const Blog = () => {
 	return (
 		<div className="mt-8">
-			<div className="flex flex-col divide-y sm:px-8 lg:px-12 xl:px-32 divide-gray-300">
+			<div className="flex flex-col divide-y px-8 lg:px-12 xl:px-32 divide-gray-300">
 				<details>
 					<summary className="py-2 outline-none cursor-pointer text-xl font-medium text-blue-600">
 						What is CORS?
