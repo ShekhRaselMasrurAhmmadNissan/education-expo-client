@@ -4,6 +4,7 @@ import Main from '../Layouts/Main/Main';
 import Private from '../Layouts/Private/Private';
 import { loadAllCourses, loadCourseInformation } from '../Loader/loader';
 import AllCourses from '../Pages/AllCourses/AllCourses';
+import Blog from '../Pages/Blog/Blog';
 import Checkout from '../Pages/Checkout/Checkout';
 import CourseInformation from '../Pages/CourseInformation/CourseInformation';
 import ErrorPage from '../Pages/ErrorPage/ErrorPage';
@@ -21,6 +22,7 @@ const router = createBrowserRouter([
 			{ path: 'home', element: <Home /> },
 			{ path: 'login', element: <Login /> },
 			{ path: 'register', element: <Register /> },
+			{ path: 'blog', element: <Blog /> },
 			{
 				path: 'courses',
 				element: <Courses />,
