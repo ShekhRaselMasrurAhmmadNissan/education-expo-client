@@ -8,6 +8,7 @@ import Blog from '../Pages/Blog/Blog';
 import Checkout from '../Pages/Checkout/Checkout';
 import CourseInformation from '../Pages/CourseInformation/CourseInformation';
 import ErrorPage from '../Pages/ErrorPage/ErrorPage';
+import FAQ from '../Pages/FAQ/FAQ';
 import Home from '../Pages/Home/Home';
 import Login from '../Pages/Login/Login';
 import Register from '../Pages/Register/Register';
@@ -23,6 +24,7 @@ const router = createBrowserRouter([
 			{ path: 'login', element: <Login /> },
 			{ path: 'register', element: <Register /> },
 			{ path: 'blog', element: <Blog /> },
+			{ path: 'faq', element: <FAQ /> },
 			{
 				path: 'courses',
 				element: <Courses />,
