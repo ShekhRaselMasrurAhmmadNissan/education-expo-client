@@ -6,11 +6,11 @@ const Courses = () => {
 	const courses = useLoaderData();
 	console.log(courses);
 	return (
-		<div className="grid grid-cols-7 mt-8">
-			<div className="col-span-2">
+		<div className="grid grid-cols-1 lg:grid-cols-7 mt-8">
+			<div className="lg:col-span-2">
 				<Sidebar courses={courses} />
 			</div>
-			<div className="col-span-5">
+			<div className="lg:col-span-5">
 				<Outlet />
 			</div>
 		</div>

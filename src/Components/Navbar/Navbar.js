@@ -74,12 +74,17 @@ const Navbar = () => {
 					<ul className="flex items-center hidden space-x-8 lg:flex">
 						{user && user?.uid ? (
 							<>
-								<li>
+								<li className="cursor-pointer">
 									{user?.photoURL ? (
-										<img src={user.photoURL} alt="" />
+										<img
+											src={user.photoURL}
+											alt=""
+											className="h-12 w-12 rounded-full"
+											title={user.displayName}
+										/>
 									) : (
 										<FaUserAlt
-											className="h-8 w-8 rounded-full"
+											className="h-12 w-12 rounded-full"
 											title={user.displayName}
 										/>
 									)}
@@ -144,7 +149,7 @@ const Navbar = () => {
 						</li>
 					</ul>
 					<button
-						className="text-3xl"
+						className="text-3xl lg:hidden"
 						onClick={() => {
 							setIsLight(!isLight);
 						}}
