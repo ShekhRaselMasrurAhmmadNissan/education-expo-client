@@ -9,7 +9,9 @@ const Checkout = () => {
 	useEffect(() => {
 		const loadCourseDetails = async () => {
 			try {
-				const res = await fetch(`http://localhost:5000/course/${id}`);
+				const res = await fetch(
+					`https://b610-lerning-platform-server-side-shekhraselmasrurahmmadnissan.vercel.app/course/${id}`
+				);
 				const data = await res.json();
 				console.log(data);
 				setCourseDetails(data);
