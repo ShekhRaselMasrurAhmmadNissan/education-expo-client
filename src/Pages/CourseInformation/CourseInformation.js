@@ -2,6 +2,7 @@ import React from 'react';
 import { createRef } from 'react';
 import { useEffect } from 'react';
 import { useState } from 'react';
+import { FaFileDownload } from 'react-icons/fa';
 import { Link, useParams } from 'react-router-dom';
 import Pdf from 'react-to-pdf';
 
@@ -25,7 +26,7 @@ const CourseInformation = () => {
 	}, [id]);
 
 	return (
-		<div className="mr-4 relative pr-8">
+		<div className="mr-4 relative pr-8 mt-8 lg:mt-0">
 			<Pdf
 				targetRef={ref}
 				filename={`${courseDetails?.name}.pdf`}
@@ -34,20 +35,30 @@ const CourseInformation = () => {
 				scale={0.7}
 			>
 				{({ toPdf }) => (
-					<button
-						className="text-lg font-medium px-3 py-2 rounded-md bg-blue-400 text-white absolute right-8"
-						onClick={toPdf}
-					>
-						Download
-					</button>
+					<>
+						<button
+							className="text-lg font-medium px-3 py-2 rounded-md bg-blue-400  hidden lg:inline-block"
+							onClick={toPdf}
+						>
+							Download
+						</button>
+
+						<button className="text-blue-600 absolute right-8">
+							<FaFileDownload className="h-8 w-8" />
+						</button>
+					</>
 				)}
 			</Pdf>
 
 			<div ref={ref} className="ml-8">
-				<h1 className="text-4xl font-medium text-blue-500 mb-3">
+				<h1 className="text-2xl lg:text-4xl font-medium text-blue-500 mb-3 mr-8 lg:mr-0">
 					{courseDetails?.name}
 				</h1>
-				<img src={courseDetails?.image} alt="" className="h-96" />
+				<img
+					src={courseDetails?.image}
+					alt=""
+					className="h-48 lg:h-96"
+				/>
 				<h2 className="text-2xl font-medium mt-2">
 					Instructor:{' '}
 					<span className="text-blue-600">
