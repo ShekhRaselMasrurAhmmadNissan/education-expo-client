@@ -79,11 +79,6 @@ const Login = () => {
 							className="w-full px-4 py-3 rounded-md border-gray-300 bg-gray-50 text-gray-800 focus:border-blue-600"
 							required
 						/>
-						<div className="flex justify-end text-xs text-gray-600">
-							<a rel="noopener noreferrer" href="#">
-								Forgot Password?
-							</a>
-						</div>
 					</div>
 
 					{error && (
