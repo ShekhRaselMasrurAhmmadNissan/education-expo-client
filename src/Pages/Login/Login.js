@@ -1,12 +1,13 @@
 import React, { useState } from 'react';
 import { useContext } from 'react';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
+import { toast } from 'react-toastify';
 import SocialMedia from '../../Components/SocialMedia/SocialMedia';
 import { AuthContext } from '../../Contexts/AuthProvider/AuthProvider';
 
 const Login = () => {
 	const [error, setError] = useState('');
-	const { login } = useContext(AuthContext);
+	const { login, setLoading } = useContext(AuthContext);
 
 	const navigate = useNavigate();
 	const location = useLocation();
@@ -24,11 +25,20 @@ const Login = () => {
 				console.log(user);
 				form.reset();
 				setError('');
-				navigate(from, { replace: true });
+				if (user.emailVerified) {
+					navigate(from, { replace: true });
+				} else {
+					toast.error(
+						'The Email is not verified. Please verify the email first.'
+					);
+				}
 			})
 			.catch((error) => {
 				console.error(error);
 				setError(error.message);
+			})
+			.finally(() => {
+				setLoading(false);
 			});
 	};
 

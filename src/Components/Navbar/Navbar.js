@@ -5,6 +5,7 @@ import { FaSun, FaMoon, FaUserAlt } from 'react-icons/fa';
 import navbarLogo from '../../assets/navbarLogo.png';
 import { useContext } from 'react';
 import { AuthContext } from '../../Contexts/AuthProvider/AuthProvider';
+import { toast } from 'react-toastify';
 
 const Navbar = () => {
 	const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -15,7 +16,7 @@ const Navbar = () => {
 	const handleLogout = () => {
 		logout()
 			.then(() => {
-				alert('Successfully Logged out.');
+				toast.success('Successfully Logged out.');
 			})
 			.catch((error) => console.error(error));
 	};

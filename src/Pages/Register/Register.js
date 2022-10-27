@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { useContext } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
+import { toast } from 'react-toastify';
 import SocialMedia from '../../Components/SocialMedia/SocialMedia';
 import { AuthContext } from '../../Contexts/AuthProvider/AuthProvider';
 
@@ -9,7 +10,8 @@ const Register = () => {
 
 	const navigate = useNavigate();
 
-	const { createUser, updateUserProfile } = useContext(AuthContext);
+	const { createUser, updateUserProfile, setUser, verifyEmail } =
+		useContext(AuthContext);
 
 	const handleSubmit = (event) => {
 		event.preventDefault();
@@ -25,8 +27,10 @@ const Register = () => {
 				console.log(user);
 				form.reset();
 				setError('');
-				navigate('/');
 				handleUpdateProfile(userName, photoURL);
+				handleEmailVerification();
+				toast.success('Please Verify Your Email.');
+				navigate('/');
 			})
 			.catch((error) => {
 				console.error(error);
@@ -37,10 +41,21 @@ const Register = () => {
 	const handleUpdateProfile = (userName, photoURL) => {
 		const profile = { displayName: userName, photoURL: photoURL };
 		updateUserProfile(profile)
-			.then(() => {})
+			.then((result) => {
+				setUser(result.user);
+			})
 			.catch((error) => {
 				console.error(error);
 				setError(error.message);
+			});
+	};
+
+	const handleEmailVerification = () => {
+		verifyEmail()
+			.then(() => {})
+			.catch((error) => {
+				console.error(error);
+				setError(error);
 			});
 	};
 
