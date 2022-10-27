@@ -37,7 +37,11 @@ const Navbar = () => {
 								<NavLink
 									to="home"
 									title="Home"
-									className="font-medium tracking-wide transition-colors duration-200 hover:text-deep-purple-accent-400"
+									className={({ isActive }) =>
+										isActive
+											? 'font-medium tracking-wide transition-colors duration-200 text-blue-600 border-b-2 py-1 px-2 border-blue-700'
+											: 'font-medium tracking-wide transition-colors duration-200 hover:text-blue-400'
+									}
 								>
 									Home
 								</NavLink>
@@ -46,7 +50,11 @@ const Navbar = () => {
 								<NavLink
 									to="courses"
 									title="Courses"
-									className="font-medium tracking-wide transition-colors duration-200 hover:text-deep-purple-accent-400"
+									className={({ isActive }) =>
+										isActive
+											? 'font-medium tracking-wide transition-colors duration-200 text-blue-600 border-b-2 py-1 px-2 border-blue-700'
+											: 'font-medium tracking-wide transition-colors duration-200 hover:text-blue-400'
+									}
 								>
 									Courses
 								</NavLink>
@@ -55,7 +63,11 @@ const Navbar = () => {
 								<NavLink
 									to="faq"
 									title="FAQ"
-									className="font-medium tracking-wide transition-colors duration-200 hover:text-deep-purple-accent-400"
+									className={({ isActive }) =>
+										isActive
+											? 'font-medium tracking-wide transition-colors duration-200 text-blue-600 border-b-2 py-1 px-2 border-blue-700'
+											: 'font-medium tracking-wide transition-colors duration-200 hover:text-blue-400'
+									}
 								>
 									FAQ
 								</NavLink>
@@ -64,7 +76,11 @@ const Navbar = () => {
 								<NavLink
 									to="blog"
 									title="Blog"
-									className="font-medium tracking-wide transition-colors duration-200 hover:text-deep-purple-accent-400"
+									className={({ isActive }) =>
+										isActive
+											? 'font-medium tracking-wide transition-colors duration-200 text-blue-600 border-b-2 py-1 px-2 border-blue-700'
+											: 'font-medium tracking-wide transition-colors duration-200 hover:text-blue-400'
+									}
 								>
 									Blog
 								</NavLink>
