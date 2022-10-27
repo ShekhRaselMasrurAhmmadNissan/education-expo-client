@@ -41,8 +41,8 @@ const Sidebar = ({ courses }) => {
 					</svg>
 				</button>
 				{isSidebarOpen && (
-					<div className="absolute top-10 left-0 w-full mt-[150px] z-10">
-						<div className="p-5 bg-white border rounded shadow-sm">
+					<div className="bg-gray-200 absolute top-10 left-0 w-full mt-[150px] z-10">
+						<div className="p-5 border rounded shadow-sm">
 							<div className="flex items-center justify-between mb-4 relative">
 								<div className="absolute right-10 top-10">
 									<button

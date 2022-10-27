@@ -26,6 +26,8 @@ const Checkout = () => {
 		const firstName = form.firstName.value;
 		const lastName = form.lastName.value;
 
+		form.reset();
+
 		Swal.fire(
 			`Thank You ${firstName} ${lastName}`,
 			`for purchasing the ${courseDetails?.name} course`,
@@ -33,8 +35,8 @@ const Checkout = () => {
 		);
 	};
 	return (
-		<div>
-			<h1 className="text-4xl font-medium mb-6">
+		<div className="mb-10 lg:mb-0 mx-2 lg:mx-0">
+			<h1 className="text-2xl lg:text-4xl font-medium mb-6">
 				You have decided to enroll in{' '}
 				<span className="text-blue-600">{courseDetails?.name}</span>{' '}
 				course.

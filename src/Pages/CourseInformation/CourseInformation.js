@@ -36,14 +36,14 @@ const CourseInformation = () => {
 			>
 				{({ toPdf }) => (
 					<>
-						<button
-							className="text-lg font-medium px-3 py-2 rounded-md bg-blue-400  hidden lg:inline-block"
-							onClick={toPdf}
-						>
+						<button className="text-lg font-medium px-3 py-2 rounded-md bg-blue-400  hidden lg:inline-block">
 							Download
 						</button>
 
-						<button className="text-blue-600 absolute right-8">
+						<button
+							className="text-blue-600 absolute right-8"
+							onClick={toPdf}
+						>
 							<FaFileDownload className="h-8 w-8" />
 						</button>
 					</>
