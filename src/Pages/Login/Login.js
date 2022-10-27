@@ -25,13 +25,7 @@ const Login = () => {
 				console.log(user);
 				form.reset();
 				setError('');
-				if (user.emailVerified) {
-					navigate(from, { replace: true });
-				} else {
-					toast.error(
-						'The Email is not verified. Please verify the email first.'
-					);
-				}
+				navigate(from, { replace: true });
 			})
 			.catch((error) => {
 				console.error(error);
